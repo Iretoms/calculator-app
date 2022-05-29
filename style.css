@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
+    background-color: #3faafc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.calculator {
+    width: 23rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 20px 5px rgba(0,0,0,0.2);
+
+}
+
+.answer-section {
+   align-self: flex-end;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   height: 7rem;
+   max-height: 11rem;
+   width: 100%;
+}
+
+.answer-section .answer {
+    color: #12567c;
+    margin-top: 0;
+    text-align: right;
+    font-size: 40px;
+    height: 4rem;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.answer-section .input {
+    color: #12567c;
+    font-size: 1.2rem;
+    height: 1.2rem;
+    width: 100%;
+    text-align: right;
+    margin-top: 0;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(121, 125, 128,0.3);
+    margin-bottom: 1rem;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(4, 4rem);
+    grid-auto-rows: 4rem;
+    grid-gap: 0.9rem;
+}
+
+button {
+    cursor: pointer;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #f5fafa;
+    color: #797d80;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+button:active {
+    transform: scale(0.97);
+    background-color: rgba(63, 170, 252,0.3);
+}
+
+#zero {
+    grid-column: span 2;
+}
+
+#clear,
+#backspace,
+#percent,
+#division,
+#multiply,#minus,#plus,#equals {
+    background-color: #d9eeff;
+    color: #71b2e4;
+}
+
