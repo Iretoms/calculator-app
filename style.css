@@ -38,7 +38,7 @@ body {
    width: 100%;
 }
 
-.answer-section .answer {
+.answer-section .currentText {
     color: #12567c;
     margin-top: 0;
     text-align: right;
@@ -48,7 +48,7 @@ body {
     word-break: break-all;
 }
 
-.answer-section .input {
+.answer-section .prevText {
     color: #12567c;
     font-size: 1.2rem;
     height: 1.2rem;
