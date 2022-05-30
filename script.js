@@ -25,10 +25,12 @@ clearBtn.addEventListener('click',()=>{
 })
 
 equalsBtn.addEventListener('click',()=>{
-    
+        compute()
 })
 
-
+backspaceBtn.addEventListener('click',()=>{
+    backspace()
+})
 
 
 function appendNumber(number){
@@ -37,7 +39,13 @@ function appendNumber(number){
 }
 
 function chooseOperation(operator){
-    currentTextEl.innerText += operator
+    if(currentTextEl.innerText ==='') return
+    if(prevTextEl.innerText !== ''){
+        compute()
+    }
+    // currentTextEl.innerText += operator
+    prevTextEl.innerText = currentTextEl.innerText
+    currentTextEl.innerText = ''
 }
 
 function clear(){
@@ -46,12 +54,45 @@ function clear(){
 }
 
 function backspace(){
-
+    currentTextEl.innerText = currentTextEl.innerText.toString().slice(0,-1)
 }
 
 function compute(){
-    
+   let computation
+   let prev = +prevTextEl.innerText
+   let current = +currentTextEl.innerText
+   if(isNaN(prev) || isNaN(current)) return
+    switch (operator) {
+        case '+':
+            computation = prev + current
+            break;
+         case '-':
+             computation = prev - current
+             break;
+         case '/':
+            computation = prev / current
+            break;
+         case '*':
+            computation = prev + current
+            break;
+         case '%':
+            computation = prev / 100
+            break;
+        default:
+            return
+       }
+
+   
+    currentTextEl.innerText = computation
+    prevTextEl.innerText = ''
+
 }
+
+
+
+
+
+
 
 
 
