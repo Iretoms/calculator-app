@@ -7,7 +7,6 @@ const numberButtons = document.querySelectorAll('.number')
 const operatorButtons = document.querySelectorAll('.operator')
 
 
-
 numberButtons.forEach(numberButton =>{
     numberButton.addEventListener('click',()=>{
         appendNumber(numberButton.innerText)    
@@ -24,9 +23,7 @@ clearBtn.addEventListener('click',()=>{
     clear()
 })
 
-equalsBtn.addEventListener('click',()=>{
-        compute()
-})
+equalsBtn.addEventListener('click',compute)
 
 backspaceBtn.addEventListener('click',()=>{
     backspace()
@@ -34,18 +31,12 @@ backspaceBtn.addEventListener('click',()=>{
 
 
 function appendNumber(number){
-    if(number === '.' && currentTextEl.innerText.includes('.')) return
-    currentTextEl.innerText += number
+    if(number === '.' && prevTextEl.innerText.includes('.')) return
+    prevTextEl.innerText += number
 }
 
 function chooseOperation(operator){
-    if(currentTextEl.innerText ==='') return
-    if(prevTextEl.innerText !== ''){
-        compute()
-    }
-    // currentTextEl.innerText += operator
-    prevTextEl.innerText = currentTextEl.innerText
-    currentTextEl.innerText = ''
+    prevTextEl.innerText += operator 
 }
 
 function clear(){
@@ -54,41 +45,16 @@ function clear(){
 }
 
 function backspace(){
-    currentTextEl.innerText = currentTextEl.innerText.toString().slice(0,-1)
+    prevTextEl.innerText = prevTextEl.innerText.toString().slice(0,-1)
 }
 
 function compute(){
-   let computation
-   let prev = +prevTextEl.innerText
-   let current = +currentTextEl.innerText
-   if(isNaN(prev) || isNaN(current)) return
-    switch (operator) {
-        case '+':
-            computation = prev + current
-            break;
-         case '-':
-             computation = prev - current
-             break;
-         case '/':
-            computation = prev / current
-            break;
-         case '*':
-            computation = prev + current
-            break;
-         case '%':
-            computation = prev / 100
-            break;
-        default:
-            return
-       }
-
-   
-    currentTextEl.innerText = computation
-    prevTextEl.innerText = ''
-
+   let buttonText = this.innerText
+   if(prevTextEl.innerText ==='') return
+   if(buttonText === '='){
+       currentTextEl.innerText = eval(prevTextEl.innerHTML)
+   }
 }
-
-
 
 
 
